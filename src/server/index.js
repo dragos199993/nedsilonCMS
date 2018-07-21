@@ -1,5 +1,6 @@
 import express from 'express'
 import path from 'path'
+import ejs from 'ejs'
 import favicon from 'serve-favicon'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
@@ -15,7 +16,8 @@ const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'jade')
+app.set('view engine', 'ejs');
+
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
@@ -53,6 +55,8 @@ app.use(function(err, req, res, next) {
   })
 })
 
-app.listen(4000)
+app.listen(4000, () => {
+  console.log('Server running at http://localhost:4000');
+})
 
 export default app
